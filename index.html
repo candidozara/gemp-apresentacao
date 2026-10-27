@@ -1,25 +1,21 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Análise da jornada GEMP</title>
+<script>if (window.matchMedia("(max-width: 760px)").matches && !/[?&]desktop/.test(location.search)) { location.replace("mobile.html"); }</script>
 <style>
 :root {
-  --paper: #F3F5F7; --card: #FFFFFF; --ink: #111B2E; --muted: #4F5B6E; --line: #D5DCE5;
-  --teal: #0B6E67; --teal-soft: #DCEFEC; --signal: #A93404; --signal-soft: #FBE7DC;
-  --gold: #7A4F06; --gold-soft: #F8EED8;
+  --paper: #0E1522; --card: #162033; --ink: #E8EDF5; --muted: #A3AEC0; --line: #2A3850;
+  --teal: #3CC2B6; --teal-soft: #173A38; --signal: #F0883E; --signal-soft: #3B2316;
+  --gold: #E0B25C; --gold-soft: #3A2F18;
   --display: "Source Serif 4", Georgia, "Times New Roman", serif;
   --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0E1522; --card: #162033; --ink: #E8EDF5; --muted: #A3AEC0; --line: #2A3850;
-    --teal: #3CC2B6; --teal-soft: #173A38; --signal: #F0883E; --signal-soft: #3B2316;
-    --gold: #E0B25C; --gold-soft: #3A2F18; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0E1522; --card: #162033; --ink: #E8EDF5; --muted: #A3AEC0; --line: #2A3850;
-  --teal: #3CC2B6; --teal-soft: #173A38; --signal: #F0883E; --signal-soft: #3B2316;
-  --gold: #E0B25C; --gold-soft: #3A2F18; color-scheme: dark;
+/* Tema claro só quando pedido explicitamente: data-theme="light" */
+:root[data-theme="light"] {
+  --paper: #F3F5F7; --card: #FFFFFF; --ink: #111B2E; --muted: #4F5B6E; --line: #D5DCE5;
+  --teal: #0B6E67; --teal-soft: #DCEFEC; --signal: #A93404; --signal-soft: #FBE7DC;
+  --gold: #7A4F06; --gold-soft: #F8EED8; color-scheme: light;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
