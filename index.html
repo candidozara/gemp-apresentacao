@@ -162,6 +162,31 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
 .b-gold { background: var(--gold); color: #fff; }
 .legend { display: flex; flex-wrap: wrap; gap: 1.2cqi; font-size: 1.05cqi; color: var(--muted); }
 .legend i { display: inline-block; width: 1.6cqi; height: 1.2cqi; vertical-align: middle; margin-right: .5cqi; border-radius: 2px; }
+/* Roadmap interativo: gráfico à esquerda, detalhe do épico à direita */
+.rm-body { display: grid; grid-template-columns: 1.45fr 1fr; gap: 2.2cqi; flex: 1; min-height: 0; position: relative; z-index: 4; }
+.rm-gantt { display: flex; flex-direction: column; justify-content: space-between; min-height: 0; gap: .4cqi; }
+.rm-gantt .gl { grid-template-columns: 17cqi 1fr; gap: 1cqi; }
+.foot a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--teal); }
+.rm-gantt .track { display: block; height: 2cqi; }
+.rm-gantt .axis-track { height: 1.6cqi; background: none; border: none; }
+.rm-gantt .lbl { font-size: 1cqi; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rm-gantt .gl .lbl b { display: inline; margin-right: .6cqi; color: var(--teal); font-size: .95cqi; }
+.rm-gantt button.gl { width: 100%; background: none; border: 0; padding: .2cqi .4cqi; margin: 0; cursor: pointer; text-align: left; font: inherit; color: inherit; border-radius: 3px; }
+.rm-gantt button.gl[aria-pressed="true"] { background: var(--teal-soft); }
+.rm-gantt button.gl:focus-visible, .ep-chip:focus-visible { outline: .3cqi solid var(--teal); outline-offset: .2cqi; }
+.rm-gantt .bar { font-size: .78cqi; padding: 0 .2cqi; }
+.detail { background: var(--card); border: 1px solid var(--line); border-radius: 4px; padding: 1.1cqi 1.5cqi; display: flex; flex-direction: column; gap: .6cqi; min-height: 0; overflow: hidden; }
+.detail h3 { font-size: 1.8cqi; }
+.detail p { font-size: 1.08cqi; line-height: 1.3; }
+.detail .meta { display: grid; grid-template-columns: 1fr 1fr; gap: .7cqi; }
+.detail .meta div { background: var(--paper); border-radius: 3px; padding: .4cqi .6cqi; display: flex; flex-direction: column; gap: .15cqi; min-width: 0; }
+.detail .meta span { font-family: var(--mono); font-size: .85cqi; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.detail .meta b { font-size: 1.1cqi; font-weight: 600; line-height: 1.3; }
+.rm-foot { display: flex; justify-content: space-between; align-items: center; gap: 2cqi; flex-wrap: wrap; position: relative; z-index: 4; }
+.rm-foot .legend { font-size: 1cqi; gap: 1cqi; }
+.sem-data { display: flex; align-items: center; gap: .8cqi; flex-wrap: wrap; font-size: 1cqi; color: var(--muted); }
+.ep-chip { font: inherit; font-size: 1cqi; background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 99px; padding: .3cqi .9cqi; cursor: pointer; }
+.ep-chip[aria-pressed="true"] { border-color: var(--teal); color: var(--teal); background: var(--teal-soft); }
 
 /* Navegação: clique nas bordas e setas do teclado */
 .zone { position: absolute; top: 0; bottom: 0; width: 18%; z-index: 3; background: transparent; border: 0; cursor: pointer; }
@@ -441,43 +466,61 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
     <p class="eyebrow">Roadmap</p>
     <h2>Do primeiro teste ao lançamento, em 20 semanas</h2>
     <p class="lede" style="font-size:1.4cqi">Cada salto acontece depois de um gate. Ondas e pausas de um sprint (14 dias), de 15/05 a 01/10/2026.</p>
-    <div class="gantt">
-      <div class="gl"><span class="lbl"></span><div class="track axis-track"><span style="left:0%">Mai</span><span style="left:12.1%">Jun</span><span style="left:33.6%">Jul</span><span style="left:55.7%">Ago</span><span style="left:77.9%">Set</span><span style="left:auto;right:0">Out</span></div></div>
-      <div class="gl"><span class="lbl"><b>Turma 10</b>Ondas e pausas</span><div class="track">
-        <div class="bar b-teal" style="left:0%;width:10%">Onda 1</div>
-        <div class="bar b-pause" style="left:10%;width:10%">G1</div>
-        <div class="bar b-teal" style="left:20%;width:10%">Onda 2</div>
-        <div class="bar b-pause" style="left:30%;width:10%">G2</div>
-        <div class="bar b-teal" style="left:40%;width:10%">Onda 3</div>
-        <div class="bar b-pause" style="left:50%;width:10%">G3</div>
-      </div></div>
-      <div class="gl"><span class="lbl"><b>Turma 11</b>Definição validada</span><div class="track">
-        <div class="bar b-ink" style="left:60%;width:20%">Turma 11 · 2 sprints</div>
-        <div class="bar b-teal" style="left:80%;width:20%">Massivo · G4</div>
-      </div></div>
-      <div class="gl"><span class="lbl"><b>Lançamento</b>Go-to-Market</span><div class="track">
-        <div class="bar b-gold" style="left:90%;width:10%">GTM</div>
-      </div></div>
-      <div class="gl"><span class="lbl"><b>EP-1 e EP-3</b>MVP</span><div class="track">
-        <div class="bar b-soft" style="left:0%;width:10%">Onda 1</div>
-        <div class="bar b-soft" style="left:40%;width:10%">Onda 3</div>
-      </div></div>
-      <div class="gl"><span class="lbl"><b>EP-2, EP-4, EP-5</b>Trilhas e guia</span><div class="track">
-        <div class="bar b-soft" style="left:20%;width:10%">Onda 2</div>
-      </div></div>
-      <div class="gl"><span class="lbl"><b>EP-6</b>Plano de 90 dias</span><div class="track">
-        <div class="bar b-soft" style="left:40%;width:10%">Onda 3</div>
-        <div class="bar b-soft" style="left:60%;width:20%">Turma 11</div>
-      </div></div>
+    <div class="rm-body">
+      <div class="rm-gantt">
+        <div class="gl"><span class="lbl"></span><span class="track axis-track"><span style="left:0%">Mai</span><span style="left:12.1%">Jun</span><span style="left:33.6%">Jul</span><span style="left:55.7%">Ago</span><span style="left:77.9%">Set</span><span style="left:auto;right:0">Out</span></span></div>
+        <div class="gl"><span class="lbl"><b>Turma 10</b>Ondas e pausas</span><span class="track">
+          <span class="bar b-teal" style="left:0%;width:10%">Onda 1</span>
+          <span class="bar b-pause" style="left:10%;width:10%">G1</span>
+          <span class="bar b-teal" style="left:20%;width:10%">Onda 2</span>
+          <span class="bar b-pause" style="left:30%;width:10%">G2</span>
+          <span class="bar b-teal" style="left:40%;width:10%">Onda 3</span>
+          <span class="bar b-pause" style="left:50%;width:10%">G3</span>
+        </span></div>
+        <div class="gl"><span class="lbl"><b>Turma 11</b>Definição validada</span><span class="track">
+          <span class="bar b-ink" style="left:60%;width:20%">Turma 11</span>
+          <span class="bar b-teal" style="left:80%;width:20%">Massivo · G4</span>
+        </span></div>
+        <div class="gl"><span class="lbl"><b>Lançamento</b>Go-to-Market</span><span class="track">
+          <span class="bar b-gold" style="left:90%;width:10%">GTM</span>
+        </span></div>
+        <button class="gl ep" type="button" data-ep="ep1" aria-pressed="true"><span class="lbl"><b>EP-1</b>Onboarding unificado</span><span class="track">
+          <span class="bar b-soft" style="left:0%;width:10%">Onda 1</span>
+          <span class="bar b-soft" style="left:40%;width:10%">Onda 3</span>
+        </span></button>
+        <button class="gl ep" type="button" data-ep="ep2" aria-pressed="false"><span class="lbl"><b>EP-2</b>Diagnóstico + trilhas</span><span class="track">
+          <span class="bar b-soft" style="left:20%;width:10%">Onda 2</span>
+        </span></button>
+        <button class="gl ep" type="button" data-ep="ep3" aria-pressed="false"><span class="lbl"><b>EP-3</b>Instrumentação CES/NPS</span><span class="track">
+          <span class="bar b-soft" style="left:0%;width:10%">Onda 1</span>
+        </span></button>
+        <button class="gl ep" type="button" data-ep="ep4" aria-pressed="false"><span class="lbl"><b>EP-4</b>Guia de três decisões</span><span class="track">
+          <span class="bar b-soft" style="left:20%;width:10%">Onda 2</span>
+        </span></button>
+        <button class="gl ep" type="button" data-ep="ep5" aria-pressed="false"><span class="lbl"><b>EP-5</b>Networking por trilha</span><span class="track">
+          <span class="bar b-soft" style="left:20%;width:10%">Onda 2</span>
+        </span></button>
+        <button class="gl ep" type="button" data-ep="ep6" aria-pressed="false"><span class="lbl"><b>EP-6</b>Plano de 90 dias + CS</span><span class="track">
+          <span class="bar b-soft" style="left:40%;width:10%">Onda 3</span>
+          <span class="bar b-soft" style="left:60%;width:20%">Turma 11</span>
+        </span></button>
+      </div>
+      <aside class="detail" id="detail" aria-live="polite"></aside>
     </div>
-    <div class="legend">
-      <span><i style="background:var(--teal)"></i>Teste na Turma 10</span>
-      <span><i style="background:var(--gold-soft);border:1px dashed var(--gold)"></i>Pausa com gate</span>
-      <span><i style="background:var(--ink)"></i>Turma 11</span>
-      <span><i style="background:var(--gold)"></i>Go-to-Market</span>
-      <span><i style="background:var(--teal-soft);border:1px solid var(--teal)"></i>Épico no período</span>
+    <div class="rm-foot">
+      <div class="legend">
+        <span><i style="background:var(--teal)"></i>Teste na Turma 10</span>
+        <span><i style="background:var(--gold-soft);border:1px dashed var(--gold)"></i>Pausa com gate</span>
+        <span><i style="background:var(--ink)"></i>Turma 11</span>
+        <span><i style="background:var(--gold)"></i>Go-to-Market</span>
+        <span><i style="background:var(--teal-soft);border:1px solid var(--teal)"></i>Épico no período</span>
+      </div>
+      <div class="sem-data"><span>Sem data no ciclo:</span>
+        <button type="button" class="ep-chip" data-ep="ep7" aria-pressed="false">EP-7 Matching 1:1</button>
+        <button type="button" class="ep-chip" data-ep="ep8" aria-pressed="false">EP-8 Agrupar vídeos</button>
+        <button type="button" class="ep-chip" data-ep="ep9" aria-pressed="false">EP-9 Regravação</button>
+      </div>
     </div>
-    <p class="small">Sem data no ciclo: EP-7 (matching 1:1, LATER), EP-8 (agrupar vídeos, em andamento) e EP-9 (regravação, paralela).</p>
     <div class="foot"><span>Roadmap · <a href="https://miro.com/app/board/uXjVEVSJa7c=/?moveToWidget=3458764688604705876&amp;share_link_id=487169810412" target="_blank" rel="noopener">cronograma no Miro</a></span><span>12 / 15</span></div>
   </section>
 
@@ -584,11 +627,90 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
   document.getElementById('zr').addEventListener('click', function () { show(current + 1); });
 
   document.addEventListener('keydown', function (e) {
+    // Com um botão do roadmap em foco, Espaço ativa o botão e não troca o slide
+    if (e.key === ' ' && e.target && e.target.closest && e.target.closest('button')) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); show(current + 1); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(current - 1); }
     else if (e.key === 'Home') { show(0); }
     else if (e.key === 'End') { show(total - 1); }
   });
+
+  /* Roadmap: detalhe de cada épico ao clicar */
+  var EPICS = {
+    ep1: { code: 'EP-1', name: 'Onboarding unificado', badge: 'DO NOW', fase: 'Planning', versao: 'Versão 1.0 (MVP)',
+      quando: 'Onda 1 (15/05 a 28/05) e Onda 3 (10/07 a 23/07)', metrica: 'CES-1 e Likert ≥ 4',
+      gate: 'G1 para sair da Onda 1; G3 para promover à Turma 11.',
+      oque: 'Ataca a entrada: acesso guiado com login e recuperação de senha, navegação clara e um próximo passo visível. Unifica a comunicação depois da compra.',
+      porque: 'Sem entrar e entender a plataforma, o aluno nem consome o curso. É o tema mais citado no NPS (82%).' },
+    ep2: { code: 'EP-2', name: 'Diagnóstico + trilhas', badge: 'DO NOW', fase: 'Planning', versao: 'Versão 1.0 (MVP)',
+      quando: 'Onda 2 (12/06 a 25/06)', metrica: 'Likert ≥ 4 e queda no NPS',
+      gate: 'G2 para sair da Onda 2 (CES-2 ↓ e Likert ≥ 4).',
+      oque: 'Diagnóstico por dor e estágio, e conteúdo organizado em trilhas. O aluno escolhe uma trilha principal, em vez de enfrentar a playlist inteira.',
+      porque: 'Responde ao tema de 74% (“muito conteúdo”). Trilhas reduzem a sobrecarga sem cortar valor (H2).' },
+    ep3: { code: 'EP-3', name: 'Instrumentação CES/NPS', badge: 'DO NOW', fase: 'Planning', versao: 'Versão 1.0 (MVP)',
+      quando: 'Onda 1 (15/05 a 28/05)', metrica: 'CES-1, CES-2, CES-3, NPS e eventos no GA4',
+      gate: 'O G1 depende dos dados deste épico.',
+      oque: 'Mede o esforço em cada etapa (CES) e o valor percebido após a aplicação (NPS), além dos eventos no GA4.',
+      porque: 'Sem medir o esforço por etapa, nenhuma hipótese é validada. É o que permite decidir os gates com dados.' },
+    ep4: { code: 'EP-4', name: 'Guia de três decisões', badge: 'NEXT', fase: 'Discovery', versao: 'Versão 1.1',
+      quando: 'Onda 2 (12/06 a 25/06)', metrica: 'Likert ≥ 4 e CES-2',
+      gate: 'G2 para sair da Onda 2.',
+      oque: 'No evento, cada participante sai com três decisões de como aplicar o conteúdo, filtradas pela trilha escolhida.',
+      porque: 'Converte conteúdo em decisão. O aluno sabe o que existe, mas não sabe o que fazer primeiro (H2).' },
+    ep5: { code: 'EP-5', name: 'Networking por trilha', badge: 'NEXT', fase: 'Discovery', versao: 'Versão 1.3',
+      quando: 'Onda 2 (12/06 a 25/06)', metrica: 'Likert ≥ 4 no piloto de networking por trilha',
+      gate: 'Validação por trilha antes de ampliar. O matching 1:1 fica para depois (EP-7).',
+      oque: 'Conecta alunos pela trilha e pela dor em comum, em vez de um networking social aberto.',
+      porque: '“Networking irrelevante”: 10% das menções. Só gera valor com contexto (H3).' },
+    ep6: { code: 'EP-6', name: 'Plano de 90 dias + CS', badge: 'NEXT', fase: 'Discovery', versao: 'Versão 1.5',
+      quando: 'Onda 3 (10/07 a 23/07) e Turma 11 (07/08 a 03/09)', metrica: 'CES-3 e NPS pós-aplicação',
+      gate: 'G3 (entrada na Turma 11) e G4 (rollout massivo).',
+      oque: 'Plano com três marcos e check-ins de Customer Success, que sustentam a execução depois do evento.',
+      porque: 'Sustenta a aplicação no negócio e o valor percebido depois do evento (H4).' },
+    ep7: { code: 'EP-7', name: 'Matching 1:1', badge: 'LATER', fase: 'Continuous Discovery', versao: 'Versão 2.0',
+      quando: 'Sem data no ciclo', metrica: 'A definir depois do piloto',
+      gate: 'Reavaliar depois do piloto de networking por trilha.',
+      oque: 'Conexão individual entre alunos, com sugestão de pares por perfil e objetivo.',
+      porque: 'Esforço alto e viabilidade baixa no ciclo atual. Fica para depois do piloto.' },
+    ep8: { code: 'EP-8', name: 'Agrupar vídeos', badge: 'DO NOW', fase: 'Release', versao: 'A confirmar',
+      quando: 'Sem data no ciclo; em andamento', metrica: 'CES-1 (esforço para consumir)',
+      gate: 'Sem gate próprio.',
+      oque: 'Junta os vídeos de 5 minutos em blocos de 15 a 30 minutos, sem regravar nada.',
+      porque: 'Reduz a fragmentação da playlist sem parar o rollout. É a ação de menor esforço para o consumo.' },
+    ep9: { code: 'EP-9', name: 'Regravação dos conteúdos', badge: 'PARALELA', fase: 'Delivery', versao: 'A definir',
+      quando: 'Em paralelo às Turmas 10 e 11', metrica: 'CES-1 e consumo nas trilhas',
+      gate: 'Sem gate no ciclo.',
+      oque: 'Regrava os conteúdos com foco em decisão, em paralelo ao rollout.',
+      porque: 'Valor muito alto, mas esforço muito alto. Não cabe nas duas turmas, então corre em paralelo.' }
+  };
+  var detail = document.getElementById('detail');
+  var epButtons = Array.prototype.slice.call(document.querySelectorAll('[data-ep]'));
+
+  function pickEpic(id) {
+    var e = EPICS[id];
+    if (!e) return;
+    var tagClass = e.badge === 'DO NOW' ? 't-teal' : (e.badge === 'NEXT' ? 't-gold' : '');
+    detail.innerHTML =
+      '<span class="tag ' + tagClass + '">' + e.badge + '</span>' +
+      '<h3>' + e.code + ' · ' + e.name + '</h3>' +
+      '<div class="meta">' +
+        '<div><span>Fase</span><b>' + e.fase + '</b></div>' +
+        '<div><span>Versão</span><b>' + e.versao + '</b></div>' +
+        '<div><span>Quando é testado</span><b>' + e.quando + '</b></div>' +
+        '<div><span>Métrica que valida</span><b>' + e.metrica + '</b></div>' +
+      '</div>' +
+      '<p><b>Gate:</b> ' + e.gate + '</p>' +
+      '<p><b>O que é:</b> ' + e.oque + '</p>' +
+      '<p><b>Por que importa:</b> ' + e.porque + '</p>';
+    epButtons.forEach(function (b) {
+      b.setAttribute('aria-pressed', b.getAttribute('data-ep') === id ? 'true' : 'false');
+    });
+  }
+
+  epButtons.forEach(function (b) {
+    b.addEventListener('click', function () { pickEpic(b.getAttribute('data-ep')); });
+  });
+  pickEpic('ep1');
 
   show(0);
 })();
