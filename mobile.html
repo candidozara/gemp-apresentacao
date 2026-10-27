@@ -203,36 +203,50 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
   .bar-val { text-align: left; }
 }
 
+/* Barra fixa: voltar ao portfólio no Notion */
+.topbar { position: fixed; top: 12px; right: 14px; z-index: 60; display: flex; gap: 8px; }
+.topbar a { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--ink); text-decoration: none; background: var(--card); border: 1px solid var(--line); border-radius: 99px; padding: 6px 12px; box-shadow: 0 1px 6px rgba(0,0,0,.18); opacity: .92; white-space: nowrap; }
+.topbar a:hover, .topbar a:focus-visible { border-color: var(--teal); color: var(--teal); outline: none; }
+/* Botões dos quadros do Miro */
+.miro-row { display: inline-flex; flex-wrap: wrap; gap: .8cqi; }
+.miro-btn { display: inline-flex; align-items: center; gap: .4em; font-family: var(--mono); font-size: 3.22cqi; letter-spacing: .03em; color: #fff; background: var(--teal); text-decoration: none; padding: .7cqi 1.3cqi; border-radius: 99px; line-height: 1.2; }
+.miro-btn:hover, .miro-btn:focus-visible { filter: brightness(1.12); outline: none; }
+.foot .miro-btn { font-size: 2.94cqi; padding: .45cqi 1cqi; }
+a.miro-btn, .foot a.miro-btn, .foot a.miro-btn:hover { color: #fff !important; text-decoration: none !important; }
 /* ===== Versão mobile (celular) ===== */
 html, body { height: auto; }
 body { display: block; overflow-x: hidden; overflow-y: auto; background: var(--paper); }
-.deck { position: relative; width: 100vw; height: auto; aspect-ratio: auto; overflow: visible; padding: 0 16px 48px; box-sizing: border-box; container-type: inline-size; display: block; }
-.deck > * { }
+.deck { position: relative; width: 100vw; height: auto; aspect-ratio: auto; overflow: visible; padding: 0 16px 84px; box-sizing: border-box; container-type: inline-size; display: block; }
 .slide { position: relative !important; inset: auto !important; display: flex !important; aspect-ratio: auto !important; height: auto !important; min-height: 0 !important; overflow: visible !important; padding: 36px 0 28px !important; gap: 14px !important; animation: none !important; border-bottom: 1px solid var(--line); }
 .slide:last-of-type { border-bottom: 0; }
-.foot { position: static !important; left: auto; right: auto; bottom: auto; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.foot { position: static !important; left: auto; right: auto; bottom: auto; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
 .zone, .progress, #progress { display: none !important; }
 .grow, .rm-body, .diag, .matrix { flex: none !important; }
-.lenses, .pillars, .steps, .hyp, .dec, .ces, .gates, .open, .phases, .waves, .wave-end, .flow, .rm-body, .diag, .bar-row, .detail .meta, .matrix, .row, [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+.lenses, .pillars, .steps, .hyp, .dec, .ces, .gates, .open, .phases, .waves, .wave-end, .flow, .diag, .bar-row, .detail .meta, .matrix, .row, [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
 .matrix { grid-template-rows: none !important; }
 .matrix .axis, .matrix .colh { display: none !important; }
 .arr { display: none !important; }
-.rm-gantt { gap: 10px; }
-.track, .rm-gantt .track { height: 28px !important; }
-.bar { font-size: 11px !important; }
-.bar-val { text-align: left; }
 .cover h1 { font-size: 9.5cqi !important; max-width: none !important; }
 .kicker { font-size: 7cqi !important; }
 h2 { font-size: 8.4cqi !important; line-height: 1.12; }
 .rm-body { display: block !important; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
-.rm-gantt { min-width: 640px; height: auto !important; }
+.rm-gantt { min-width: 640px; height: auto !important; gap: 10px; }
 .rm-gantt .gl { grid-template-columns: 150px 1fr !important; }
 .rm-gantt .lbl { white-space: nowrap; }
+.rm-gantt .track { height: 28px !important; }
+.bar { font-size: 11px !important; }
 .detail { margin-top: 18px; }
-.to-desk { display: inline-block; margin: 14px 0 0; font-family: var(--mono); font-size: 12px; color: var(--teal); }
+.bar-val { text-align: left; }
+/* Barra inferior fixa no celular */
+.topbar { top: auto; bottom: 0; right: 0; left: 0; gap: 0; background: var(--card); border-top: 1px solid var(--line); display: flex; justify-content: space-between; }
+.topbar a { flex: 1; text-align: center; border: 0; border-radius: 0; box-shadow: none; opacity: 1; padding: 14px 8px; font-size: 13px; background: transparent; }
+.topbar a + a { border-left: 1px solid var(--line); }
+.miro-btn { font-size: 13px !important; padding: 9px 14px !important; }
+.foot .miro-btn { font-size: 12px !important; padding: 7px 12px !important; }
+.miro-row { gap: 8px; }
 </style>
 
-<div style="padding:14px 16px 0"><a class="to-desk" href="index.html?desktop=1">Ver versão desktop (16:9) →</a></div>
+<nav class="topbar" aria-label="Navegação"><a href="https://www.notion.so/25bf3057c7be81228f15f488f7570f6c" target="_blank" rel="noopener">← Portfólio no Notion</a><a href="index.html?desktop=1">Versão desktop →</a></nav>
 <main class="deck" id="deck" aria-label="Apresentação GEMP">
 
   <!-- 1. Capa -->
@@ -420,7 +434,7 @@ h2 { font-size: 8.4cqi !important; line-height: 1.12; }
       <div class="cell"></div>
       <div class="cell"><div class="chip later"><b>EP-7 · LATER</b>Matching 1:1, após o piloto</div></div>
     </div>
-    <div class="foot"><span>Priorização · <a href="https://miro.com/app/board/uXjVEVSJa7c=/?moveToWidget=3458764688604705877&amp;share_link_id=487169810412" target="_blank" rel="noopener">matriz no Miro</a> · <a href="https://miro.com/app/board/uXjVEVSJa7c=/?moveToWidget=3458764688604705878&amp;share_link_id=487169810412" target="_blank" rel="noopener">critérios e ordem no Miro</a></span><span>8 / 15</span></div>
+    <div class="foot"><span>Priorização</span><span class="miro-row"><a class="miro-btn" href="https://miro.com/app/board/uXjVEVSJa7c=/?moveToWidget=3458764688604705877&amp;share_link_id=487169810412" target="_blank" rel="noopener">matriz no Miro ↗</a><a class="miro-btn" href="https://miro.com/app/board/uXjVEVSJa7c=/?moveToWidget=3458764688604705878&amp;share_link_id=487169810412" target="_blank" rel="noopener">critérios e ordem no Miro ↗</a></span></div>
   </section>
 
   <!-- 9. MVP -->
@@ -547,7 +561,7 @@ h2 { font-size: 8.4cqi !important; line-height: 1.12; }
         <button type="button" class="ep-chip" data-ep="ep9" aria-pressed="false">EP-9 Regravação</button>
       </div>
     </div>
-    <div class="foot"><span>Roadmap · <a href="https://miro.com/app/board/uXjVEVSJa7c=/?moveToWidget=3458764688604705876&amp;share_link_id=487169810412" target="_blank" rel="noopener">cronograma no Miro</a></span><span>12 / 15</span></div>
+    <div class="foot"><span>Roadmap</span><span class="miro-row"><a class="miro-btn" href="https://miro.com/app/board/uXjVEVSJa7c=/?moveToWidget=3458764688604705876&amp;share_link_id=487169810412" target="_blank" rel="noopener">cronograma no Miro ↗</a></span></div>
   </section>
 
   <!-- 12. Go-to-Market -->
