@@ -442,7 +442,7 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
   <section class="slide" aria-label="Rollout em ondas">
     <p class="eyebrow">Rollout</p>
     <h2>Testar na Turma 10, validar e liberar na Turma 11</h2>
-    <p class="small">A Turma 10 é o campo de experimento, separado por perfil de usuário. A Turma 11 recebe só o que foi validado. Em paralelo, os vídeos de 5 min são agrupados em blocos de 15 a 30 min, e a regravação segue como iniciativa contínua.</p>
+    <p class="small">A Turma 10 é o campo de experimento, separado por perfil de usuário. A Turma 11 recebe só o que foi validado. A partir da 2ª semana da Turma 11, os vídeos de 5 min são agrupados em blocos de 15 a 30 min, em paralelo ao time de audiovisual. A regravação segue como iniciativa contínua.</p>
     <div class="grow">
       <div class="row waves">
         <div class="card"><span class="tag t-teal">Onda 1 · 15/05 a 28/05</span><h3>Family &amp; Friends</h3><p class="small">Quem está perto do time. EP-1 e EP-3.</p></div>
@@ -504,6 +504,9 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
           <span class="bar b-soft" style="left:40%;width:10%">Onda 3</span>
           <span class="bar b-soft" style="left:60%;width:20%">Turma 11</span>
         </span></button>
+        <button class="gl ep" type="button" data-ep="ep8" aria-pressed="false"><span class="lbl"><b>EP-8</b>Agrupar vídeos</span><span class="track">
+          <span class="bar b-soft" style="left:65.5%;width:34.5%;border-style:dashed">contínuo, em paralelo →</span>
+        </span></button>
       </div>
       <aside class="detail" id="detail" aria-live="polite"></aside>
     </div>
@@ -517,7 +520,6 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
       </div>
       <div class="sem-data"><span>Sem data no ciclo:</span>
         <button type="button" class="ep-chip" data-ep="ep7" aria-pressed="false">EP-7 Matching 1:1</button>
-        <button type="button" class="ep-chip" data-ep="ep8" aria-pressed="false">EP-8 Agrupar vídeos</button>
         <button type="button" class="ep-chip" data-ep="ep9" aria-pressed="false">EP-9 Regravação</button>
       </div>
     </div>
@@ -672,11 +674,11 @@ ul.clean li::before { content: ""; position: absolute; left: 0; top: .75em; widt
       gate: 'Reavaliar depois do piloto de networking por trilha.',
       oque: 'Conexão individual entre alunos, com sugestão de pares por perfil e objetivo.',
       porque: 'Esforço alto e viabilidade baixa no ciclo atual. Fica para depois do piloto.' },
-    ep8: { code: 'EP-8', name: 'Agrupar vídeos', badge: 'DO NOW', fase: 'Release', versao: 'A confirmar',
-      quando: 'Sem data no ciclo; em andamento', metrica: 'CES-1 (esforço para consumir)',
-      gate: 'Sem gate próprio.',
-      oque: 'Junta os vídeos de 5 minutos em blocos de 15 a 30 minutos, sem regravar nada.',
-      porque: 'Reduz a fragmentação da playlist sem parar o rollout. É a ação de menor esforço para o consumo.' },
+    ep8: { code: 'EP-8', name: 'Agrupar vídeos', badge: 'DO NOW', fase: 'Delivery', versao: 'A confirmar',
+      quando: 'A partir da 2ª semana da Turma 11 (14/08), sem data final', metrica: 'CES-1 (esforço para consumir)',
+      gate: 'Sem gate próprio. Cada trilha publicada no LMS é uma entrega parcial.',
+      oque: 'Junta os vídeos de 5 minutos em blocos de 15 a 30 minutos. Cada trilha pronta sobe no LMS assim que fica pronta.',
+      porque: 'Roda em paralelo ao time de audiovisual, dono do backlog de renovação dos vídeos. Por isso não tem data final: o produto acompanha as trilhas publicadas.' },
     ep9: { code: 'EP-9', name: 'Regravação dos conteúdos', badge: 'PARALELA', fase: 'Delivery', versao: 'A definir',
       quando: 'Em paralelo às Turmas 10 e 11', metrica: 'CES-1 e consumo nas trilhas',
       gate: 'Sem gate no ciclo.',
